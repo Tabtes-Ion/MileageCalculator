@@ -2,16 +2,20 @@
  * File: csci1302/ch16/MileageCalculator.java
  * Package: ch16
  * @author Christopher Williams
+ * Edited by: Dalton Hall
  * Created on: Apr 12, 2017
- * Last Modified: Apr 15, 2019
+ * Last Modified: Apr 11, 2024
  * Description:  
  */
 package ch16;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -50,6 +54,9 @@ public class MileageCalculatorNoConversion extends Application {
     
     private GridPane mainPane = new GridPane();
     
+    ObservableList<String> calcType = FXCollections.observableArrayList("MPG", "L/100KM");
+    ComboBox<String> calcBox =	new ComboBox<>(calcType);
+    
     public void start(Stage primaryStage) {   	
     	// set toggle group for RadioButtons
     	rbMPG.setToggleGroup(tgConv);
@@ -69,8 +76,7 @@ public class MileageCalculatorNoConversion extends Application {
         
         // add items to mainPane
         mainPane.add(lblEffType, 0, 0);
-        mainPane.add(rbMPG, 0, 1);
-        mainPane.add(rbKPL, 1, 1);
+        mainPane.add(calcBox, 1, 0);
         mainPane.add(lblDistance, 0, 2);
         mainPane.add(tfDistance, 1, 2);
         mainPane.add(lblCapacity, 0, 3);
